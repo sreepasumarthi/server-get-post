@@ -1,147 +1,85 @@
-:root {
-    --primary: coral;
-    --secondary: cornflowerblue;
+/* General */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
   
-  /* Structure */
-  
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: white;
+  /* Gallery */
+  .columns {
+    display: flex;
   }
   
-  .recipe {
+  .column {
+    flex: 1;
     padding: 10px;
-    margin: 10px;
-    border: 2px solid #401e01;
-    background: #f2e8dc;
   }
   
-  .recipe img {
-    max-width: 90%;
-    display: block;
-    margin: auto;
+  .gallery-item {
+    margin-bottom: 20px;
   }
   
-  #recipe-details-column {
-    padding: 10px;
-    margin: 10px;
-    background: lightblue;
-    border-radius: 5px;
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
   }
   
-  #add-link {
-    font-size: 0.8em;
-    color: #401e01;
-    border: 2px solid #401e01;
-    padding: 0 4px;
+  .gallery-item:hover img {
+    transform: scale(1.05);
   }
   
-  #edit-link {
-    float: right;
-    margin-right: 10px;
-  }
   
-  #delete-link {
-    float: right;
-  }
-  
-  #add-edit-recipe-container {
-    padding: 10px;
-    margin: 10px;
-    background: lightblue;
-    border-radius: 5px;
-  }
-  
-  /* Form */
-  .w3-modal-content {
-    max-width: 40%;
-    border: 2px solid #401e01;
-  }
-  
-  .w3-container {
-    background: #f2e8dc;
-    position: relative;
-  }
-  
-  .spoon {
-    width: 30%;
-    height: 50%;
-    position: absolute;
-    right: 5%;
-    top: 40%;
-    background: url("images/wooden-spoon.png");
-    background-image: url(images/wooden-spoon.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.5;
-  }
-  
-  label {
-    display: block;
-  }
-  
-  .inline {
-    display: inline;
-  }
-  
-  #ingredients-p input {
-    margin-top: 5px;
-  }
-  
-  #add-ingredient {
-    color: #401e01;
-    font-size: 0.75em;
-    text-align: right;
-  }
-  
-  #img-prev-section {
-    width: 100px;
-    border: 1px solid #401e01;
-    max-width: 100px;
-    margin-right: 5px;
-  }
-  #img-prev {
-    padding: 2.5%;
-    display: block;
-    margin: auto;
-    max-width: 95%;
-  }
-  
-  /* Typography */
-  
-  #main-nav-items {
-    font-size: 1.2em;
-  }
-  h1 {
-    text-align: center;
-    color: #401e01;
-  }
-  
-  a {
-    text-decoration: none;
-    color: crimson;
-  }
-  
-  .hidden {
+  /* Modal */
+  .modal {
     display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
   }
   
-  /* Larger Resolutions */
-  
-  @media (min-width: 600px) {
-    .columns {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .two-columns div {
-      flex: 1;
-    }
-    .recipe {
-      width: 15%;
-    }
-  
-    #recipe-list {
-      justify-content: center;
-    }
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
   }
+  
+  .modal-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .modal-image {
+    flex-shrink: 0;
+    width: 150px;
+    margin-right: 20px;
+  }
+  
+  .modal-details {
+    flex-grow: 1;
+    padding-left: 160px;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
