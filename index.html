@@ -3,6 +3,35 @@
 <head>
   <link rel="stylesheet" href="styles.css" />
 </head>
+<header>
+    <h1>Buy & Sell Crafts <a href="#" id="add-craft">+</a></h1>
+</header>
+<div id="craft-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form id="add-craft-form">
+            <p>
+                <label for="craft-name">Craft Name:</label>
+                <input type="text" id="craft-name" name="name" required />
+            </p>
+            <p>
+                <label for="craft-description">Description:</label>
+                <input type="text" id="craft-description" name="description" required />
+            </p>
+            <p>
+                <label for="craft-supplies">Supplies:</label>
+                <input type="text" id="craft-supplies" name="supplies" required />
+            </p>
+            <p>
+                <label for="craft-image">Upload Image:</label>
+                <input type="file" id="craft-image" name="img" accept="image/*" />
+            </p>
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </form>
+    </div>
+</div>
 <body>
   <h1>Buy & Sell Crafts</h1>
   <div class="columns">

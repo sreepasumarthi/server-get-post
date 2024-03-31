@@ -1,14 +1,14 @@
 const getCrafts = async () => {
     try {
-      return (await fetch("https://server-get-post-n1ni.onrender.com/api/crafts")).json();
+      return (await fetch("/api/crafts")).json();
     } catch (error) {
-      console.log("error retrieving data");
-      return "";
+      console.log("Error retrieving data:", error);
+      return [];
     }
   };
   
   const openModal = (craft) => {
-    const modal = document.getElementById("myModal");
+    const modal = document.getElementById("dialog");
     const modalTitle = document.getElementById("modal-title");
     const modalDescription = document.getElementById("modal-description");
     const modalSupplies = document.getElementById("modal-supplies");
@@ -24,7 +24,7 @@ const getCrafts = async () => {
       modalSupplies.appendChild(listItem);
     });
   
-    modalImage.src = "https://server-get-post-n1ni.onrender.com/" + craft.img;
+    modalImage.src = craft.image;
   
     modal.style.display = "block";
   
@@ -36,50 +36,121 @@ const getCrafts = async () => {
     closeButton.addEventListener("click", closeModal);
   
     window.addEventListener("click", (event) => {
-      if (event.target == modal) {
+      if (event.target === modal) {
         closeModal();
       }
     });
   };
   
   const showCrafts = async () => {
-    const craftsJSON = await getCrafts();
-    const columns = document.querySelectorAll(".column");
+    const crafts = await getCrafts();
+    const craftsDiv = document.getElementById("crafts-list");
   
-    if (craftsJSON == "") {
-      columns.forEach(column => {
-        column.innerHTML = "Sorry, no crafts";
-      });
-      return;
-    }
+    craftsDiv.innerHTML = "";
   
-    let columnIndex = 0;
-    let columnCount = columns.length;
-    let columnHeights = Array.from(columns).map(() => 0); // Array to store column heights
+    crafts.forEach((craft) => {
+      const section = document.createElement("section");
+      section.classList.add("craft");
+      craftsDiv.append(section);
   
-    craftsJSON.forEach((craft, index) => {
-      // Find the shortest column
-      const shortestColumnIndex = columnHeights.indexOf(Math.min(...columnHeights));
+      const a = document.createElement("a");
+      a.href = "#";
+      section.append(a);
   
-      const galleryItem = document.createElement("div");
-      galleryItem.classList.add("gallery-item");
+      const h3 = document.createElement("h3");
+      h3.innerHTML = craft.name;
+      a.append(h3);
+  
       const img = document.createElement("img");
-      img.src = "https://server-get-post-n1ni.onrender.com/" + craft.img;
-      img.alt = craft.name;
-      img.addEventListener("click", () => openModal(craft));
-      galleryItem.appendChild(img);
-      columns[shortestColumnIndex].appendChild(galleryItem);
+      img.src = craft.image;
+      a.append(img);
   
-      // Update the height of the column
-      columnHeights[shortestColumnIndex] += galleryItem.offsetHeight;
-  
-      // If the column's height exceeds the container's height, switch to the next column
-      if (columnHeights[shortestColumnIndex] >= columns[shortestColumnIndex].offsetHeight) {
-        columnIndex++;
-        if (columnIndex === columnCount) columnIndex = 0;
-        columnHeights[shortestColumnIndex] = 0; // Reset the height of the column
-      }
+      a.onclick = (e) => {
+        e.preventDefault();
+        openModal(craft);
+      };
     });
   };
   
+  const addCraft = async (e) => {
+    e.preventDefault();
+    const form = document.getElementById("add-craft-form");
+    const formData = new FormData(form);
+  
+    formData.append("supplies", getSupplies());
+  
+    try {
+      const response = await fetch("/api/crafts", {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        throw new Error("Error posting data");
+      }
+  
+      await response.json();
+      resetForm();
+      document.getElementById("dialog").style.display = "none";
+      showCrafts();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  const getSupplies = () => {
+    const inputs = document.querySelectorAll("#supplies-boxes input");
+    let supplies = [];
+  
+    inputs.forEach((input) => {
+      supplies.push(input.value);
+    });
+  
+    return supplies.join(",");
+  };
+  
+  const resetForm = () => {
+    const form = document.getElementById("add-craft-form");
+    form.reset();
+    document.getElementById("supplies-boxes").innerHTML = "";
+    document.getElementById("img-prev").src = "";
+  };
+  
+  const showCraftForm = (e) => {
+    e.preventDefault();
+    openDialog("add-craft-form");
+    resetForm();
+  };
+  
+  const addSupply = (e) => {
+    e.preventDefault();
+    const section = document.getElementById("supplies-boxes");
+    const input = document.createElement("input");
+    input.type = "text";
+    section.append(input);
+  };
+  
+  const openDialog = (id) => {
+    document.getElementById("dialog").style.display = "block";
+    document.querySelectorAll("#dialog-details > *").forEach((item) => {
+      item.classList.add("hidden");
+    });
+    document.getElementById(id).classList.remove("hidden");
+  };
+  
+  // Initial code
   showCrafts();
+  document.getElementById("add-craft-form").onsubmit = addCraft;
+  document.getElementById("add-link").onclick = showCraftForm;
+  document.getElementById("add-supply").onclick = addSupply;
+  
+  document.getElementById("img").onchange = (e) => {
+    if (!e.target.files.length) {
+      document.getElementById("img-prev").src = "";
+      return;
+    }
+    document.getElementById("img-prev").src = URL.createObjectURL(
+      e.target.files.item(0)
+    );
+  };
+  
