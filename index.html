@@ -3,38 +3,8 @@
 <head>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<header>
-    <h1>Buy & Sell Crafts <a href="#" id="add-craft">+</a></h1>
-</header>
-
-<!-- Modal for adding crafts -->
-<div id="craft-modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <form id="add-craft-form">
-            <p>
-                <label for="craft-name">Craft Name:</label>
-                <input type="text" id="craft-name" name="name" required />
-            </p>
-            <p>
-                <label for="craft-description">Description:</label>
-                <input type="text" id="craft-description" name="description" required />
-            </p>
-            <p>
-                <label for="craft-supplies">Supplies:</label>
-                <input type="text" id="craft-supplies" name="supplies" required />
-            </p>
-            <p>
-                <label for="craft-image">Upload Image:</label>
-                <input type="file" id="craft-image" name="img" accept="image/*" />
-            </p>
-            <p>
-                <button type="submit">Submit</button>
-            </p>
-        </form>
-    </div>
-</div>
 <body>
+  <h1>Buy & Sell Crafts <a href="#" id="add-link">+</a></h1>
   <div class="columns">
     <div class="column" id="column1"></div>
     <div class="column" id="column2"></div>
@@ -43,17 +13,26 @@
   </div>
   <div id="myModal" class="modal">
     <div class="modal-content">
-      <span class="close">&times;</span>
-      <div class="modal-content-wrapper">
-        <div class="modal-image">
-          <img id="modal-image">
-        </div>
-        <div class="modal-details">
-          <h2 id="modal-title"></h2>
-          <p id="modal-description"></p>
-          <ul id="modal-supplies"></ul>
-        </div>
-      </div>
+      <span id="close-btn" class="close">&times;</span>
+      <form id="add-craft-form" enctype="multipart/form-data">
+        <p>
+          <label for="name">Craft Name:</label>
+          <input type="text" id="name" name="name" required />
+        </p>
+        <p>
+          <label for="description">Description:</label>
+          <input type="text" id="description" name="description" required />
+        </p>
+        <p>
+          <label for="supplies">Supplies:</label>
+          <input type="text" id="supplies" name="supplies" required />
+        </p>
+        <p>
+          <label for="img">Upload Image:</label>
+          <input type="file" id="img" name="img" accept="image/*" />
+        </p>
+        <button type="submit">Submit</button>
+      </form>
     </div>
   </div>
   <script src="script.js"></script>
