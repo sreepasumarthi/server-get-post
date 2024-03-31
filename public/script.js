@@ -154,3 +154,4 @@ const getCrafts = async () => {
     );
   };
   
+  showCrafts();
