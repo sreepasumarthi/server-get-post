@@ -1,6 +1,6 @@
 const getCrafts = async () => {
     try {
-      return (await fetch("https://read-server-json-1.onrender.com/api/crafts")).json();
+      return (await fetch("https://server-get-post-n1ni.onrender.com/api/crafts")).json();
     } catch (error) {
       console.log("error retrieving data");
       return "";
@@ -24,7 +24,7 @@ const getCrafts = async () => {
       modalSupplies.appendChild(listItem);
     });
   
-    modalImage.src = "https://read-server-json-1.onrender.com/" + craft.img;
+    modalImage.src = "https://server-get-post-n1ni.onrender.com/" + craft.img;
   
     modal.style.display = "block";
   
@@ -64,7 +64,7 @@ const getCrafts = async () => {
       const galleryItem = document.createElement("div");
       galleryItem.classList.add("gallery-item");
       const img = document.createElement("img");
-      img.src = "https://read-server-json-1.onrender.com/" + craft.img;
+      img.src = "https://server-get-post-n1ni.onrender.com/" + craft.img;
       img.alt = craft.name;
       img.addEventListener("click", () => openModal(craft));
       galleryItem.appendChild(img);
