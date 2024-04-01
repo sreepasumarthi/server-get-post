@@ -80,43 +80,44 @@ const showCrafts = async () => {
 
 showCrafts();
 
-const openAddCraftModal = () => {
-    const modal = document.getElementById("add-craft-modal");
-    modal.style.display = "block";
-  
-    const closeAddCraftModal = () => {
-      modal.style.display = "none";
-    };
-  
-    const addSupplyField = () => {
-      const suppliesContainer = document.getElementById("craftSuppliesContainer");
-      const input = document.createElement("input");
-      input.type = "text";
-      input.name = "supply[]";
-      input.required = true;
-      suppliesContainer.appendChild(input);
-    };
-  
-    const addCraft = async (e) => {
-      e.preventDefault();
-      const form = document.getElementById("add-craft-form");
-      const formData = new FormData(form);
-      const response = await fetch("/api/crafts", {
+const addCraft = async (e) => {
+    e.preventDefault();
+    const form = document.getElementById("add-craft-form");
+    const formData = new FormData(form);
+    const response = await fetch("/api/crafts", {
         method: "POST",
         body: formData,
-      });
-      if (!response.ok) {
+    });
+    if (!response.ok) {
         console.error("Failed to add craft");
         return;
-      }
-      closeAddCraftModal();
-      showCrafts();
-    };
-  
-    document.getElementById("add-craft-form").addEventListener("submit", addCraft);
-  };
-  
-  document.getElementById("add-craft-button").addEventListener("click", () => {
-    openAddCraftModal();
-  });
-  
+    }
+    const newCraft = await response.json();
+    displayCraft(newCraft);
+    form.reset();
+};
+
+document.getElementById("add-craft-form").addEventListener("submit", addCraft);
+
+const displayCraft = (craft) => {
+    const column = document.querySelector(".column");
+    const craftDiv = document.createElement("div");
+    craftDiv.classList.add("gallery-item");
+
+    const img = document.createElement("img");
+    img.src = "https://server-get-post-n1ni.onrender.com/" + craft.img;
+    img.alt = craft.name;
+    craftDiv.appendChild(img);
+
+    column.appendChild(craftDiv);
+};
+
+const addSupply = (e) => {
+    e.preventDefault();
+    const suppliesTextArea = document.getElementById("craft-supplies");
+    const newSupplyInput = document.createElement("input");
+    newSupplyInput.type = "text";
+    suppliesTextArea.parentNode.insertBefore(newSupplyInput, e.target);
+};
+
+document.getElementById("add-supply-button").addEventListener("click", addSupply);

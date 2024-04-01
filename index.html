@@ -7,7 +7,6 @@
 
 <body>
     <h1>Buy & Sell Crafts</h1>
-    <button id="add-craft-button">Add Craft</button>
     <div class="columns">
         <div class="column" id="column1"></div>
         <div class="column" id="column2"></div>
@@ -29,26 +28,31 @@
             </div>
         </div>
     </div>
-    <div id="addCraftModal" class="modal">
-        <div class="modal-content">
-          <span class="close" onclick="closeAddCraftModal()">&times;</span>
-          <h2>Add Craft</h2>
-          <form id="add-craft-form">
-            <label for="craftName">Craft Name:</label>
-            <input type="text" id="craftName" name="craftName" required>
-            <label for="craftDescription">Craft Description:</label>
-            <textarea id="craftDescription" name="craftDescription" required></textarea>
-            <label for="craftImage">Craft Image:</label>
-            <input type="file" id="craftImage" name="craftImage" accept="image/*" required>
-            <label for="craftSupplies">Craft Supplies:</label>
-            <div id="craftSuppliesContainer">
-              <input type="text" name="supply[]" required>
-            </div>
-            <button type="button" onclick="addSupplyField()">Add Supply</button>
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      </div>      
+    <section id="add-craft-section">
+        <h2>Add Craft</h2>
+        <form id="add-craft-form">
+            <p>
+                <label for="craft-name">Craft Name:</label>
+                <input type="text" id="craft-name" name="craft-name" required />
+            </p>
+            <p>
+                <label for="craft-description">Description:</label>
+                <textarea id="craft-description" name="craft-description" required></textarea>
+            </p>
+            <p>
+                <label for="craft-supplies">Supplies:</label>
+                <textarea id="craft-supplies" name="craft-supplies" required></textarea>
+                <button type="button" id="add-supply-button">Add Supply</button>
+            </p>
+            <p>
+                <label for="craft-image">Upload Image:</label>
+                <input type="file" id="craft-image" name="craft-image" accept="image/*" required />
+            </p>
+            <p>
+                <button type="submit" id="submit-craft-button">Submit</button>
+            </p>
+        </form>
+    </section>
     <script src="script.js"></script>
 </body>
 
