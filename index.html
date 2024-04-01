@@ -51,6 +51,35 @@
       </form>
     </div>
   </div>
+  <button id="addCraftLink">Add Craft</button>
+
+  <div id="craftModal" class="modal">
+    <div class="modal-content">
+      <span id="closeModalBtn" class="close">&times;</span>
+      <h2 id="craftModalTitle"></h2>
+      <p id="craftModalDescription"></p>
+      <ul id="craftModalSupplies"></ul>
+      <img id="craftModalImage" src="" alt="Craft Image">
+    </div>
+  </div>
+
+  <div id="addCraftModal" class="modal">
+    <div class="modal-content">
+      <span id="closeAddCraftModalBtn" class="close">&times;</span>
+      <h2>Add Craft</h2>
+      <form id="addCraftForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+        <label for="supplies">Supplies:</label><br>
+        <textarea id="supplies" name="supplies" rows="4" cols="50" required></textarea><br><br>
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required><br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
