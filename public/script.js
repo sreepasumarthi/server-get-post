@@ -79,10 +79,36 @@ const getCrafts = async () => {
   };
 
   const openAddCraftModal = () => {
-    openModal("add-craft-modal");
+    const modal = document.getElementById("myModal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDescription = document.getElementById("modal-description");
+    const modalSupplies = document.getElementById("modal-supplies");
+    const modalImage = document.getElementById("modal-image");
+  
+    // Reset the modal content
+    modalTitle.innerHTML = "Add New Craft";
+    modalDescription.textContent = "";
+    modalSupplies.innerHTML = "";
+    modalImage.src = ""; // Clear the image src
+  
+    modal.style.display = "block";
+  
+    const closeModal = () => {
+      modal.style.display = "none";
+    };
+  
+    const closeButton = document.getElementsByClassName("close")[0];
+    closeButton.addEventListener("click", closeModal);
+  
+    window.addEventListener("click", (event) => {
+      if (event.target == modal) {
+        closeModal();
+      }
+    });
   };
   
   document.getElementById("add-craft-link").addEventListener("click", openAddCraftModal);
+  
   
  
   showCrafts();
