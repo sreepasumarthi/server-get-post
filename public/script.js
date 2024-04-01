@@ -78,6 +78,7 @@ const getCrafts = async () => {
     });
   };
 
+
   const openAddCraftModal = () => {
     const modal = document.getElementById("myModal");
     const modalTitle = document.getElementById("modal-title");
@@ -85,9 +86,21 @@ const getCrafts = async () => {
     const modalSupplies = document.getElementById("modal-supplies");
     const modalImage = document.getElementById("modal-image");
   
-    // Reset the modal content
+    // Populate modal with form fields for adding a new craft
     modalTitle.innerHTML = "Add New Craft";
-    modalDescription.textContent = "";
+    modalDescription.innerHTML = `
+      <form id="add-craft-form">
+        <label for="craft-name">Craft Name:</label><br>
+        <input type="text" id="craft-name" name="name" required><br>
+        <label for="craft-description">Craft Description:</label><br>
+        <textarea id="craft-description" name="description" required></textarea><br>
+        <label for="craft-supplies">Craft Supplies (comma-separated):</label><br>
+        <input type="text" id="craft-supplies" name="supplies" required><br>
+        <label for="craft-img">Craft Image:</label><br>
+        <input type="file" id="craft-img" name="img" accept="image/*" required><br>
+        <button type="submit">Add Craft</button>
+      </form>
+    `;
     modalSupplies.innerHTML = "";
     modalImage.src = ""; // Clear the image src
   
@@ -105,9 +118,41 @@ const getCrafts = async () => {
         closeModal();
       }
     });
+  
+    // Add event listener for form submission
+    document.getElementById("add-craft-form").addEventListener("submit", addCraft);
   };
   
-  document.getElementById("add-craft-link").addEventListener("click", openAddCraftModal);
+  const addCraft = async (e) => {
+    e.preventDefault();
+    const form = document.getElementById("add-craft-form");
+    const formData = new FormData(form);
+  
+    const response = await fetch("https://server-get-post-n1ni.onrender.com/api/crafts", {
+      method: "POST",
+      body: formData,
+    });
+  
+    if (!response.ok) {
+      console.log("Error posting data");
+      return;
+    }
+  
+    const result = await response.json();
+    console.log(result);
+    resetForm();
+    document.getElementById("myModal").style.display = "none";
+    showCrafts();
+  };
+  
+  const resetForm = () => {
+    const form = document.getElementById("add-craft-form");
+    form.reset();
+  };
+  
+  // Modify the event listener to open the add craft modal
+  document.getElementById("add-link").onclick = openAddCraftModal;
+  
   
   
  
