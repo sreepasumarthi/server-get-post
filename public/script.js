@@ -81,50 +81,31 @@ const getCrafts = async () => {
  
   showCrafts();
 
-  const addCraft = async (e) => {
+  const openAddCraftModal = () => {
+    document.getElementById("add-craft-modal").style.display = "block";
+};
+
+document.getElementById("add-craft").addEventListener("click", openAddCraftModal);
+
+const addCraftForm = document.getElementById("add-craft-form");
+
+const addCraft = async (e) => {
     e.preventDefault();
-    const form = document.getElementById("add-craft-form");
-    const formData = new FormData(form);
-  
-    // Adding supplies
-    const supplyInputs = document.querySelectorAll(".supply-input");
-    const supplies = [];
-    supplyInputs.forEach((input) => {
-      if (input.value.trim() !== "") {
-        supplies.push(input.value.trim());
-      }
+    const formData = new FormData(addCraftForm);
+    const response = await fetch("/api/crafts", {
+        method: "POST",
+        body: formData
     });
-    formData.append("supplies", JSON.stringify(supplies));
-  
-    // Uploading file
-    const fileInput = document.getElementById("craft-file");
-    const file = fileInput.files[0];
-    formData.append("craftFile", file);
-  
-    const response = await fetch("http://localhost:3040/api/crafts", {
-      method: "POST",
-      body: formData,
-    });
-  
-    if (!response.ok) {
-      console.log("Error posting data");
-      return;
+    if (response.ok) {
+        // Reset the form
+        addCraftForm.reset();
+        // Close the modal
+        document.getElementById("add-craft-modal").style.display = "none";
+        // Refresh the crafts display
+        showCrafts();
+    } else {
+        console.error("Failed to add craft");
     }
-  
-    const newCrafts = await response.json();
-    showCrafts(newCrafts);
-    closeModal();
-  };
-  
-  // Add supplies functionality
-  const addSupplyInput = () => {
-    const supplyContainer = document.getElementById("supply-container");
-    const input = document.createElement("input");
-    input.type = "text";
-    input.className = "supply-input";
-    supplyContainer.appendChild(input);
-  };
-  
-  document.getElementById("add-supply-btn").addEventListener("click", addSupplyInput);
-  
-  
+};
+
+addCraftForm.addEventListener("submit", addCraft);

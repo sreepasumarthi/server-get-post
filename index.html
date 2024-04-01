@@ -3,34 +3,28 @@
 <head>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<header>
-    <h1>Buy & Sell Crafts <a href="#" id="add-craft">+</a></h1>
-    <div id="craftModal" class="modal">
-        <div class="modal-content">
-          <span class="close-craft">&times;</span>
-          <h2>Add Craft</h2>
-          <form id="add-craft-form" enctype="multipart/form-data">
-            <label for="craftName">Craft Name:</label>
-            <input type="text" id="craftName" name="craftName" required>
-      
-            <label for="craftDescription">Craft Description:</label>
-            <textarea id="craftDescription" name="craftDescription" required></textarea>
-      
-            <label>Supplies:</label>
-            <div id="supplies-container">
-              <!-- Supplies input fields will be added here dynamically -->
-            </div>
-            <button type="button" id="add-supply">Add Supplies</button>
-      
-            <label for="craftImage">Craft Image:</label>
-            <input type="file" id="craftImage" name="craftImage" accept="image/*" required>
-      
-            <button type="submit">Add Craft</button>
-          </form>
-        </div>
-    </div>      
-</header>
 <body>
+  <header>
+    <h1>Buy & Sell Crafts <a href="#" id="add-craft">+</a></h1>
+    <!-- Add Craft Modal -->
+    <div id="add-craft-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="add-craft-form">
+                <h2>Add New Craft</h2>
+                <label for="craft-name">Craft Name:</label>
+                <input type="text" id="craft-name" name="craft-name" required>
+                <label for="craft-description">Description:</label>
+                <textarea id="craft-description" name="craft-description" rows="4" required></textarea>
+                <label for="craft-supplies">Supplies:</label>
+                <textarea id="craft-supplies" name="craft-supplies" rows="4" required></textarea>
+                <label for="craft-image">Upload Image:</label>
+                <input type="file" id="craft-image" name="craft-image" accept="image/*" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+  </header>
   <div class="columns">
     <div class="column" id="column1"></div>
     <div class="column" id="column2"></div>
