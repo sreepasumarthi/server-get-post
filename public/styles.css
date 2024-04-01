@@ -83,24 +83,78 @@ body {
     cursor: pointer;
   }
 
-  /* Add Craft Modal */
-#add-craft-modal {
+ /* Modal */
+.modal {
     display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
   }
   
-  #add-craft-modal .modal-content-wrapper {
+  /* Modal content */
+  .add-craft-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+  }
+  
+  /* Close button */
+  .add-craft-modal-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .add-craft-modal-content .close:hover,
+  .add-craft-modal-content .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Form elements */
+  .add-craft-modal-content form {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
   }
   
-  #add-craft-modal .modal-image {
-    flex-shrink: 0;
-    width: 150px;
-    margin-right: 20px;
+  .add-craft-modal-content form label {
+    margin-bottom: 10px;
   }
   
-  #add-craft-modal .modal-details {
-    flex-grow: 1;
-    padding-left: 160px;
+  .add-craft-modal-content form input[type="text"],
+  .add-craft-modal-content form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .add-craft-modal-content form input[type="file"] {
+    margin-bottom: 15px;
+  }
+  
+  .add-craft-modal-content form button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-craft-modal-content form button:hover {
+    background-color: #45a049;
   }
   
