@@ -80,14 +80,87 @@ const showCrafts = async () => {
 
 showCrafts();
 
-// Add event listener to open modal button
-document.getElementById('openModal').addEventListener('click', function() {
-    // Display the add craft modal
-    document.getElementById('addCraftModal').style.display = 'block';
-});
-
-// Add event listener to close add craft modal button
-document.getElementById('closeAddCraftModal').addEventListener('click', function() {
-    // Hide the add craft modal
-    document.getElementById('addCraftModal').style.display = 'none';
-});
+// Function to add a new craft
+const addCraft = async (e) => {
+    e.preventDefault();
+    const form = document.getElementById("add-craft-form");
+    const formData = new FormData(form);
+    let response;
+    formData.append("supplies", getSupplies());
+  
+    response = await fetch("/api/crafts", {
+      method: "POST",
+      body: formData,
+    });
+  
+    // Check if data was successfully posted to the server
+    if (response.status != 200) {
+      console.log("Error posting data");
+    }
+  
+    await response.json();
+    resetForm();
+    document.getElementById("dialog").style.display = "none";
+    showCrafts();
+  };
+  
+  // Function to get supplies from form
+  const getSupplies = () => {
+    const inputs = document.querySelectorAll("#supply-boxes input");
+    let supplies = [];
+  
+    inputs.forEach((input) => {
+      supplies.push(input.value);
+    });
+  
+    return supplies.join(","); // Join supplies into a string
+  };
+  
+  // Function to reset form after submission
+  const resetForm = () => {
+    const form = document.getElementById("add-craft-form");
+    form.reset();
+    document.getElementById("supply-boxes").innerHTML = "";
+    document.getElementById("img-prev").src = "";
+  };
+  
+  // Function to display the form for adding a craft
+  const showCraftForm = (e) => {
+    e.preventDefault();
+    openDialog("add-craft-form");
+    resetForm();
+  };
+  
+  // Function to add a new input field for supplies
+  const addSupply = (e) => {
+    e.preventDefault();
+    const section = document.getElementById("supply-boxes");
+    const input = document.createElement("input");
+    input.type = "text";
+    section.append(input);
+  };
+  
+  // Function to open the dialog
+  const openDialog = (id) => {
+    document.getElementById("dialog").style.display = "block";
+    document.querySelectorAll("#dialog-details > *").forEach((item) => {
+      item.classList.add("hidden");
+    });
+    document.getElementById(id).classList.remove("hidden");
+  };
+  
+  // Initial code execution
+  showCrafts();
+  document.getElementById("add-craft-form").onsubmit = addCraft;
+  document.getElementById("add-link").onclick = showCraftForm;
+  document.getElementById("add-supply").onclick = addSupply;
+  
+  document.getElementById("img").onchange = (e) => {
+    if (!e.target.files.length) {
+      document.getElementById("img-prev").src = "";
+      return;
+    }
+    document.getElementById("img-prev").src = URL.createObjectURL(
+      e.target.files.item(0)
+    );
+  };
