@@ -80,6 +80,17 @@ const getCrafts = async () => {
  
   showCrafts();
 
+  document.addEventListener("DOMContentLoaded", function () {
+    // Event listener to open add craft modal
+    document.getElementById("add-craft").addEventListener("click", function (e) {
+        e.preventDefault();
+        showCraftForm();
+    });
+
+    // Your existing code for other event listeners and functions goes here
+});
+
+
   // Function to open the add craft modal
 const showCraftForm = (e) => {
     e.preventDefault();
