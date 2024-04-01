@@ -6,26 +6,24 @@
 <header>
     <h1>Buy & Sell Crafts <a href="#" id="add-craft">+</a></h1>
     <div id="craftModal" class="modal">
-      <div class="modal-content">
-        <span class="close-craft">&times;</span>
-        <div class="modal-content-wrapper">
-          <form id="add-craft-form" method="post">
-            <p>
-              <label for="craft-name">Craft Name:</label>
-              <input type="text" id="craft-name" name="name" required />
-            </p>
-            <p>
-              <label for="craft-description">Description:</label>
-              <input type="text" id="craft-description" name="description" required />
-            </p>
-            <!-- Add other form fields as needed -->
-            <p>
-              <button type="submit">Submit</button>
-            </p>
+        <div class="modal-content">
+          <span class="close close-craft">&times;</span>
+          <form id="add-craft-form" enctype="multipart/form-data">
+            <!-- Other form inputs -->
+            
+            <div id="supply-container">
+              <label>Supplies:</label>
+              <input type="text" class="supply-input">
+            </div>
+            <button type="button" id="add-supply-btn">Add Supplies</button>
+      
+            <label for="craft-file">Choose File:</label>
+            <input type="file" id="craft-file" name="craftFile">
+      
+            <button type="submit">Add Craft</button>
           </form>
         </div>
-      </div>
-    </div>  
+      </div>      
 </header>
 <body>
   <div class="columns">

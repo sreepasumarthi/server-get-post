@@ -81,28 +81,25 @@ const getCrafts = async () => {
  
   showCrafts();
 
-  const openCraftModal = () => {
-    const craftModal = document.getElementById("craftModal");
-    craftModal.style.display = "block";
-  
-    const closeModal = () => {
-      craftModal.style.display = "none";
-    };
-  
-    const closeButton = document.getElementsByClassName("close-craft")[0];
-    closeButton.addEventListener("click", closeModal);
-  
-    window.addEventListener("click", (event) => {
-      if (event.target === craftModal) {
-        closeModal();
-      }
-    });
-  };
-  
   const addCraft = async (e) => {
     e.preventDefault();
     const form = document.getElementById("add-craft-form");
     const formData = new FormData(form);
+  
+    // Adding supplies
+    const supplyInputs = document.querySelectorAll(".supply-input");
+    const supplies = [];
+    supplyInputs.forEach((input) => {
+      if (input.value.trim() !== "") {
+        supplies.push(input.value.trim());
+      }
+    });
+    formData.append("supplies", JSON.stringify(supplies));
+  
+    // Uploading file
+    const fileInput = document.getElementById("craft-file");
+    const file = fileInput.files[0];
+    formData.append("craftFile", file);
   
     const response = await fetch("http://localhost:3040/api/crafts", {
       method: "POST",
@@ -119,9 +116,15 @@ const getCrafts = async () => {
     closeModal();
   };
   
-  const addCraftForm = document.getElementById("add-craft-form");
-  addCraftForm.onsubmit = addCraft;
+  // Add supplies functionality
+  const addSupplyInput = () => {
+    const supplyContainer = document.getElementById("supply-container");
+    const input = document.createElement("input");
+    input.type = "text";
+    input.className = "supply-input";
+    supplyContainer.appendChild(input);
+  };
   
-  const addCraftLink = document.getElementById("add-craft");
-  addCraftLink.onclick = openCraftModal;
+  document.getElementById("add-supply-btn").addEventListener("click", addSupplyInput);
+  
   
