@@ -1,31 +1,111 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <h1>Buy & Sell Crafts</h1>
-  <div class="columns">
-    <div class="column" id="column1"></div>
-    <div class="column" id="column2"></div>
-    <div class="column" id="column3"></div>
-    <div class="column" id="column4"></div>
-  </div>
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <div class="modal-content-wrapper">
-        <div class="modal-image">
-          <img id="modal-image">
+    <h1>Buy & Sell Crafts</h1>
+    <div id="add-craft-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-content-wrapper">
+                <h2>Add New Craft</h2>
+                <form id="add-craft-form-modal" method="post">
+                    <p>
+                        <label for="name-modal">Craft Name:</label>
+                        <input type="text" id="name-modal" name="name-modal" required />
+                    </p>
+                    <p>
+                        <label for="description-modal">Description:</label>
+                        <input type="text" id="description-modal" name="description-modal" required />
+                    </p>
+                    <p>
+                        <label for="img-modal">Upload Image:</label>
+                        <input type="file" id="img-modal" name="img-modal" accept="image/*" />
+                    </p>
+                    <p>
+                        <label class="inline">Supplies:</label>
+                        <a href="#" id="add-supply-modal">Add Supplies</a>
+                        <section id="supply-boxes-modal"></section>
+                    </p>
+                    <p>
+                        <button type="submit">Submit</button>
+                        <button id="cancel-button-modal" type="button">Cancel</button>
+                    </p>
+                </form>
+            </div>
         </div>
-        <div class="modal-details">
-          <h2 id="modal-title"></h2>
-          <p id="modal-description"></p>
-          <ul id="modal-supplies"></ul>
-        </div>
+    </div>    
+    <h1 id="header">Buy and Sell Crafts <a href="#" id="add-link">+</a></h1>
+<div id="dialog" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('dialog').style.display='none'"
+        class="w3-button w3-display-topright">&times;</span>
+          <section id="dialog-details">
+            <form id="add-craft-form" method="post" class="hidden">
+                <p>
+                    <label for="name ">Craft Name:</label>
+                    <input type="text" id="name" name="name" required />
+                </p>
+                <p>
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description" required />
+                </p>
+    
+                <section class="columns">
+                    <p id="img-prev-section">
+                        <img id="img-prev">
+                    </p>
+                    <p>
+                        <label for="img">Upload Image:</label>
+                        <input type="file" id="img" name="img" accept="image/*" />
+                    </p>
+                </section>
+    
+                <p id="supply-p ">
+                    <label class="inline">Supplies:</label>
+                    <a href="#" id="add-supply">Add Supplies</a>
+                    <section id="supply-boxes"></section>
+                </p>
+                <p>
+                    <button type="submit">Submit</button>
+                    <button id="cancel-button" type="button">Cancel</button>
+                </p>
+            </form>
+
+            <section id="craft-details" class="hidden">
+
+            </section>
+        </section>
       </div>
     </div>
   </div>
-  <script src="script.js"></script>
+
+    <div class="columns">
+        <div class="column" id="column1"></div>
+        <div class="column" id="column2"></div>
+        <div class="column" id="column3"></div>
+        <div class="column" id="column4"></div>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-content-wrapper">
+                <div class="modal-image">
+                    <img id="modal-image">
+                </div>
+                <div class="modal-details">
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-description"></p>
+                    <ul id="modal-supplies"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>
