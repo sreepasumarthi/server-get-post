@@ -1,5 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
-
 const getCrafts = async () => {
     try {
         return (await fetch("https://server-get-post-n1ni.onrender.com/api/crafts")).json();
@@ -82,67 +80,38 @@ const showCrafts = async () => {
 
 showCrafts();
 
-const showCraftFormModal = (e) => {
-    e.preventDefault();
-    resetFormModal();
-    openModal("add-craft-modal");
-};
-
-const resetFormModal = () => {
-    const form = document.getElementById("add-craft-form-modal");
-    form.reset();
-    document.getElementById("supply-boxes-modal").innerHTML = "";
-    document.getElementById("img-prev-modal").src = "";
-};
-
-const addSupplyModal = (e) => {
-    e.preventDefault();
-    const section = document.getElementById("supply-boxes-modal");
+const openAddCraftModal = () => {
+    document.getElementById("addCraftModal").style.display = "block";
+  };
+  
+  const closeAddCraftModal = () => {
+    document.getElementById("addCraftModal").style.display = "none";
+  };
+  
+  const addSupplyField = () => {
+    const suppliesContainer = document.getElementById("craftSuppliesContainer");
     const input = document.createElement("input");
     input.type = "text";
-    section.append(input);
-};
-
-const addCraftModal = async(e) => {
+    input.name = "supply[]";
+    input.required = true;
+    suppliesContainer.appendChild(input);
+  };
+  
+  const addCraft = async (e) => {
     e.preventDefault();
-    const form = document.getElementById("add-craft-form-modal");
+    const form = document.getElementById("add-craft-form");
     const formData = new FormData(form);
-    formData.append("supplies", getSuppliesModal());
-
     const response = await fetch("/api/crafts", {
-        method:"POST",
-        body:formData
+      method: "POST",
+      body: formData,
     });
-
-    if(response.status != 200) {
-        console.log("there was an error posting");
+    if (!response.ok) {
+      console.error("Failed to add craft");
+      return;
     }
-
-    await response.json();
-    resetFormModal();
-    document.getElementById("add-craft-modal").style.display = "none";
+    closeAddCraftModal();
     showCrafts();
-};
-
-const getSuppliesModal = () => {
-    const inputs = document.querySelectorAll("#supply-boxes-modal input");
-    const supplies = [];
-
-    inputs.forEach((input) => {
-        supplies.push(input.value);
-    });
-    return supplies;
-};
-
-const cancelFormModal = () => {
-    resetFormModal();
-    document.getElementById("add-craft-modal").style.display = "none";
-    showCrafts();
-};
-
-document.getElementById("add-link").onclick = showCraftForm;
-document.getElementById("add-link-modal").onclick = showCraftFormModal;
-document.getElementById("add-supply-modal").onclick = addSupplyModal;
-document.getElementById("add-craft-form-modal").onsubmit = addCraftModal;
-document.getElementById("cancel-button-modal").onclick = cancelFormModal;
-});
+  };
+  
+  document.getElementById("add-craft-form").addEventListener("submit", addCraft);
+  
