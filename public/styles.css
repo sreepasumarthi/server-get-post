@@ -82,3 +82,25 @@ body {
     text-decoration: none;
     cursor: pointer;
   }
+
+  /* Add Craft Modal */
+#add-craft-modal {
+    display: none;
+  }
+  
+  #add-craft-modal .modal-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #add-craft-modal .modal-image {
+    flex-shrink: 0;
+    width: 150px;
+    margin-right: 20px;
+  }
+  
+  #add-craft-modal .modal-details {
+    flex-grow: 1;
+    padding-left: 160px;
+  }
+  
