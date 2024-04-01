@@ -80,46 +80,14 @@ const showCrafts = async () => {
 
 showCrafts();
 
-const addCraft = async (e) => {
-    e.preventDefault();
-    const form = document.getElementById("add-craft-form");
-    const formData = new FormData(form);
-    const response = await fetch("/api/crafts", {
-        method: "POST",
-        body: formData,
-    });
-    if (!response.ok) {
-        console.error("Failed to add craft");
-        return;
-    }
-    const newCraft = await response.json();
-    console.log("New craft added:", newCraft);
-    displayCraft(newCraft);
-    form.reset();
-};
+// Add event listener to open modal button
+document.getElementById('openModal').addEventListener('click', function() {
+    // Display the add craft modal
+    document.getElementById('addCraftModal').style.display = 'block';
+});
 
-
-document.getElementById("add-craft-form").addEventListener("submit", addCraft);
-
-const displayCraft = (craft) => {
-    const column = document.querySelector(".column");
-    const craftDiv = document.createElement("div");
-    craftDiv.classList.add("gallery-item");
-
-    const img = document.createElement("img");
-    img.src = "https://server-get-post-n1ni.onrender.com/" + craft.img;
-    img.alt = craft.name;
-    craftDiv.appendChild(img);
-
-    column.appendChild(craftDiv);
-};
-
-const addSupply = (e) => {
-    e.preventDefault();
-    const suppliesTextArea = document.getElementById("craft-supplies");
-    const newSupplyInput = document.createElement("input");
-    newSupplyInput.type = "text";
-    suppliesTextArea.parentNode.insertBefore(newSupplyInput, e.target);
-};
-
-document.getElementById("add-supply-button").addEventListener("click", addSupply);
+// Add event listener to close add craft modal button
+document.getElementById('closeAddCraftModal').addEventListener('click', function() {
+    // Hide the add craft modal
+    document.getElementById('addCraftModal').style.display = 'none';
+});
