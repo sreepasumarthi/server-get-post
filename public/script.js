@@ -77,6 +77,8 @@ const getCrafts = async () => {
       }
     });
   };
+ 
+  showCrafts();
 
   // Function to open the modal for adding a new craft
 const openAddCraftModal = () => {
@@ -102,6 +104,3 @@ const openAddCraftModal = () => {
   
   // Event listener for the "+" sign to open the add craft modal
   document.getElementById("addCraftButton").addEventListener("click", openAddCraftModal);
-  
- 
-  showCrafts();
