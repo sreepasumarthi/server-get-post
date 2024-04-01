@@ -93,9 +93,11 @@ const addCraft = async (e) => {
         return;
     }
     const newCraft = await response.json();
+    console.log("New craft added:", newCraft);
     displayCraft(newCraft);
     form.reset();
 };
+
 
 document.getElementById("add-craft-form").addEventListener("submit", addCraft);
 
