@@ -29,56 +29,58 @@ body {
   }
  
  
-  /* Modal */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+ /* Modal */
+.w3-modal-content {
+    max-width: 40%;
+    border: 2px solid #401e01;
   }
- 
-  .modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 800px;
-    border-radius: 10px;
+  
+  .w3-container {
+    background: #f2e8dc;
+    position: relative;
   }
- 
-  .modal-content-wrapper {
-    display: flex;
-    justify-content: space-between;
+  
+  .spoon {
+    width: 30%;
+    height: 50%;
+    position: absolute;
+    right: 5%;
+    top: 40%;
+    background: url("images/wooden-spoon.png");
+    background-image: url(images/wooden-spoon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.5;
   }
- 
-  .modal-image {
-    flex-shrink: 0;
-    width: 150px;
-    margin-right: 20px;
+  
+  label {
+    display: block;
   }
- 
-  .modal-details {
-    flex-grow: 1;
-    padding-left: 160px;
+  
+  .inline {
+    display: inline;
   }
- 
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+  
+  #craft-supplies-p input {
+    margin-top: 5px;
   }
- 
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  
+  #add-craft-supply {
+    color: #401e01;
+    font-size: 0.75em;
+    text-align: right;
   }
+  
+  #craft-img-prev-section {
+    width: 100px;
+    border: 1px solid #401e01;
+    max-width: 100px;
+    margin-right: 5px;
+  }
+  #craft-img-prev {
+    padding: 2.5%;
+    display: block;
+    margin: auto;
+    max-width: 95%;
+  }
+  

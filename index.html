@@ -9,51 +9,43 @@
 <body>
     <header>
         <h1>Buy & Sell Crafts <a href="#" id="add-craft">+</a></h1>
-        <!-- The Modal -->
-        <div id="dialog" class="w3-modal">
-            <div class="w3-modal-content">
-                <div class="w3-container">
-                    <span onclick="document.getElementById('dialog').style.display='none'"
-                        class="w3-button w3-display-topright">&times;</span>
-                    <section id="dialog-details">
-                        <form id="add-craft-form" method="post" class="hidden">
-                            <p>
-                                <label for="name">Craft Name:</label>
-                                <input type="text" id="name" name="name" required />
-                            </p>
-                            <p>
-                                <label for="description">Description:</label>
-                                <input type="text" id="description" name="description" required />
-                            </p>
-
-                            <section class="columns">
-                                <p id="img-prev-section">
-                                    <img id="img-prev">
-                                </p>
-                                <p>
-                                    <label for="img">Upload Image:</label>
-                                    <input type="file" id="img" name="img" accept="image/*" />
-                                </p>
-                            </section>
-
-                            <p id="supplies-p">
-                                <label class="inline">Supplies:</label>
-                                <a href="#" id="add-supply">Add Supply</a>
-                            <section id="supply-boxes"></section>
-                            </p>
-                            <p>
-                                <button type="submit">Submit</button>
-                            </p>
-                        </form>
-
-                        <section id="craft-details" class="hidden">
-
-                        </section>
-                    </section>
-                </div>
-            </div>
-        </div>
-        </div>
+      <!-- Modal for adding new craft -->
+<div id="add-craft-modal" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="closeCraftModal()" class="w3-button w3-display-topright">&times;</span>
+        <section id="add-craft-details">
+          <form id="add-craft-form" class="hidden">
+            <p>
+              <label for="craft-name">Craft Name:</label>
+              <input type="text" id="craft-name" name="name" required />
+            </p>
+            <p>
+              <label for="craft-description">Description:</label>
+              <input type="text" id="craft-description" name="description" required />
+            </p>
+            <section class="columns">
+              <p id="craft-img-prev-section">
+                <img id="craft-img-prev">
+              </p>
+              <p>
+                <label for="craft-img">Upload Image:</label>
+                <input type="file" id="craft-img" name="img" accept="image/*" />
+              </p>
+            </section>
+            <p id="craft-supplies-p">
+              <label class="inline">Supplies:</label>
+              <a href="#" id="add-craft-supply">Add Supply</a>
+              <section id="craft-supply-boxes"></section>
+            </p>
+            <p>
+              <button type="submit">Submit</button>
+            </p>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>  
     </header>
     <div class="columns">
         <div class="column" id="column1"></div>
