@@ -81,37 +81,42 @@ const showCrafts = async () => {
 showCrafts();
 
 const openAddCraftModal = () => {
-    document.getElementById("addCraftModal").style.display = "block";
+    const modal = document.getElementById("add-craft-modal");
+    modal.style.display = "block";
+  
+    const closeAddCraftModal = () => {
+      modal.style.display = "none";
+    };
+  
+    const addSupplyField = () => {
+      const suppliesContainer = document.getElementById("craftSuppliesContainer");
+      const input = document.createElement("input");
+      input.type = "text";
+      input.name = "supply[]";
+      input.required = true;
+      suppliesContainer.appendChild(input);
+    };
+  
+    const addCraft = async (e) => {
+      e.preventDefault();
+      const form = document.getElementById("add-craft-form");
+      const formData = new FormData(form);
+      const response = await fetch("/api/crafts", {
+        method: "POST",
+        body: formData,
+      });
+      if (!response.ok) {
+        console.error("Failed to add craft");
+        return;
+      }
+      closeAddCraftModal();
+      showCrafts();
+    };
+  
+    document.getElementById("add-craft-form").addEventListener("submit", addCraft);
   };
   
-  const closeAddCraftModal = () => {
-    document.getElementById("addCraftModal").style.display = "none";
-  };
-  
-  const addSupplyField = () => {
-    const suppliesContainer = document.getElementById("craftSuppliesContainer");
-    const input = document.createElement("input");
-    input.type = "text";
-    input.name = "supply[]";
-    input.required = true;
-    suppliesContainer.appendChild(input);
-  };
-  
-  const addCraft = async (e) => {
-    e.preventDefault();
-    const form = document.getElementById("add-craft-form");
-    const formData = new FormData(form);
-    const response = await fetch("/api/crafts", {
-      method: "POST",
-      body: formData,
-    });
-    if (!response.ok) {
-      console.error("Failed to add craft");
-      return;
-    }
-    closeAddCraftModal();
-    showCrafts();
-  };
-  
-  document.getElementById("add-craft-form").addEventListener("submit", addCraft);
+  document.getElementById("add-craft-button").addEventListener("click", () => {
+    openAddCraftModal();
+  });
   
