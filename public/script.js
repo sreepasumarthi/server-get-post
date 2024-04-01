@@ -80,3 +80,48 @@ const getCrafts = async () => {
   };
  
   showCrafts();
+
+  const openCraftModal = () => {
+    const craftModal = document.getElementById("craftModal");
+    craftModal.style.display = "block";
+  
+    const closeModal = () => {
+      craftModal.style.display = "none";
+    };
+  
+    const closeButton = document.getElementsByClassName("close-craft")[0];
+    closeButton.addEventListener("click", closeModal);
+  
+    window.addEventListener("click", (event) => {
+      if (event.target === craftModal) {
+        closeModal();
+      }
+    });
+  };
+  
+  const addCraft = async (e) => {
+    e.preventDefault();
+    const form = document.getElementById("add-craft-form");
+    const formData = new FormData(form);
+  
+    const response = await fetch("http://localhost:3040/api/crafts", {
+      method: "POST",
+      body: formData,
+    });
+  
+    if (!response.ok) {
+      console.log("Error posting data");
+      return;
+    }
+  
+    const newCrafts = await response.json();
+    showCrafts(newCrafts);
+    closeModal();
+  };
+  
+  const addCraftForm = document.getElementById("add-craft-form");
+  addCraftForm.onsubmit = addCraft;
+  
+  const addCraftLink = document.getElementById("add-craft");
+  addCraftLink.onclick = openCraftModal;
+  

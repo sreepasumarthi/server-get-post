@@ -3,8 +3,31 @@
 <head>
   <link rel="stylesheet" href="styles.css" />
 </head>
+<header>
+    <h1>Buy & Sell Crafts <a href="#" id="add-craft">+</a></h1>
+    <div id="craftModal" class="modal">
+      <div class="modal-content">
+        <span class="close-craft">&times;</span>
+        <div class="modal-content-wrapper">
+          <form id="add-craft-form" method="post">
+            <p>
+              <label for="craft-name">Craft Name:</label>
+              <input type="text" id="craft-name" name="name" required />
+            </p>
+            <p>
+              <label for="craft-description">Description:</label>
+              <input type="text" id="craft-description" name="description" required />
+            </p>
+            <!-- Add other form fields as needed -->
+            <p>
+              <button type="submit">Submit</button>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>  
+</header>
 <body>
-  <h1 id="crafts-title">Buy & Sell Crafts <span id="expand-sign">+</span></h1>
   <div class="columns">
     <div class="column" id="column1"></div>
     <div class="column" id="column2"></div>
@@ -26,14 +49,6 @@
       </div>
     </div>
   </div>
-<div id="addCraftModal" class="modal">
-    <div class="modal-content">
-      <span class="close-add">&times;</span>
-      <h2 id="addCraftTitle">Add New Craft</h2>
-      <div id="addCraftContent">
-      </div>
-    </div>
-  </div>  
   <script src="script.js"></script>
 </body>
 </html>
