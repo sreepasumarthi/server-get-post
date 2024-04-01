@@ -79,50 +79,6 @@ const getCrafts = async () => {
   };
 
 
-  const openAddCraftModal = () => {
-    const modal = document.getElementById("myModal");
-    const modalTitle = document.getElementById("modal-title");
-    const modalDescription = document.getElementById("modal-description");
-    const modalSupplies = document.getElementById("modal-supplies");
-    const modalImage = document.getElementById("modal-image");
-  
-    // Populate modal with form fields for adding a new craft
-    modalTitle.innerHTML = "Add New Craft";
-    modalDescription.innerHTML = `
-      <form id="add-craft-form">
-        <label for="craft-name">Craft Name:</label><br>
-        <input type="text" id="craft-name" name="name" required><br>
-        <label for="craft-description">Craft Description:</label><br>
-        <textarea id="craft-description" name="description" required></textarea><br>
-        <label for="craft-supplies">Craft Supplies (comma-separated):</label><br>
-        <input type="text" id="craft-supplies" name="supplies" required><br>
-        <label for="craft-img">Craft Image:</label><br>
-        <input type="file" id="craft-img" name="img" accept="image/*" required><br>
-        <button type="submit">Add Craft</button>
-      </form>
-    `;
-    modalSupplies.innerHTML = "";
-    modalImage.src = ""; // Clear the image src
-  
-    modal.style.display = "block";
-  
-    const closeModal = () => {
-      modal.style.display = "none";
-    };
-  
-    const closeButton = document.getElementsByClassName("close")[0];
-    closeButton.addEventListener("click", closeModal);
-  
-    window.addEventListener("click", (event) => {
-      if (event.target == modal) {
-        closeModal();
-      }
-    });
-  
-    // Add event listener for form submission
-    document.getElementById("add-craft-form").addEventListener("submit", addCraft);
-  };
-  
   const addCraft = async (e) => {
     e.preventDefault();
     const form = document.getElementById("add-craft-form");
@@ -142,7 +98,7 @@ const getCrafts = async () => {
     console.log(result);
     resetForm();
     document.getElementById("myModal").style.display = "none";
-    showCrafts();
+    showCrafts(); // Refresh crafts after adding new one
   };
   
   const resetForm = () => {
@@ -150,10 +106,13 @@ const getCrafts = async () => {
     form.reset();
   };
   
-  // Modify the event listener to open the add craft modal
-  document.getElementById("add-link").onclick = openAddCraftModal;
+  const openAddCraftModal = () => {
+    document.getElementById("myModal").style.display = "block";
+    resetForm();
+  };
   
+  document.getElementById("add-craft-link").addEventListener("click", openAddCraftModal);
   
+  document.getElementById("add-craft-form").addEventListener("submit", addCraft); // Listen for form submission
   
- 
   showCrafts();
