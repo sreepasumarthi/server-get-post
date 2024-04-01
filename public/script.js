@@ -1,13 +1,5 @@
-const getCrafts = async () => {
-    try {
-      return (await fetch("https://server-get-post-n1ni.onrender.com/api/crafts")).json();
-    } catch (error) {
-      console.log("error retrieving data");
-      return "";
-    }
-  };
 
-  // Function to open the modal for adding a new craft
+// Function to open the modal for adding a new craft
 const openAddCraftModal = () => {
     const addCraftModal = document.getElementById("addCraftModal");
     addCraftModal.style.display = "block";
@@ -18,7 +10,7 @@ const openAddCraftModal = () => {
     };
     
     // Close modal when close button is clicked
-    const closeButton = document.getElementById("addCraftModal").getElementsByClassName("close")[0];
+    const closeButton = document.getElementById("addCraftModal").getElementsByClassName("close-add")[0];
     closeButton.addEventListener("click", closeModal);
     
     // Close modal when clicking outside the modal
@@ -30,7 +22,17 @@ const openAddCraftModal = () => {
   };
   
   // Event listener for the "+" sign to open the add craft modal
-  document.getElementById("addCraftButton").addEventListener("click", openAddCraftModal);  
+  document.getElementById("addCraftButton").addEventListener("click", openAddCraftModal);
+  
+const getCrafts = async () => {
+    try {
+      return (await fetch("https://server-get-post-n1ni.onrender.com/api/crafts")).json();
+    } catch (error) {
+      console.log("error retrieving data");
+      return "";
+    }
+  };
+ 
  
   const openModal = (craft) => {
     const modal = document.getElementById("myModal");
