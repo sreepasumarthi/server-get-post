@@ -28,33 +28,21 @@
       </div>
     </div>
   </div>
-  <!-- Add Craft Modal -->
+  <!-- Inside the modal -->
 <div id="add-craft-modal" class="modal">
-    <div class="modal-content">
+    <div class="add-craft-modal-content">
       <span class="close">&times;</span>
-      <div class="modal-content-wrapper">
-        <div class="modal-image">
-          <img id="add-craft-img-prev">
-          <input type="file" id="add-craft-img" accept="image/*">
-        </div>
-        <div class="modal-details">
-          <form id="add-craft-form">
-            <p>
-              <label for="add-craft-name">Craft Name:</label>
-              <input type="text" id="add-craft-name" name="name" required>
-            </p>
-            <p>
-              <label for="add-craft-description">Description:</label>
-              <input type="text" id="add-craft-description" name="description" required>
-            </p>
-            <p>
-              <label for="add-craft-supplies">Supplies:</label>
-              <textarea id="add-craft-supplies" name="supplies" rows="4" required></textarea>
-            </p>
-            <button type="submit">Add Craft</button>
-          </form>
-        </div>
-      </div>
+      <form id="add-craft-form">
+        <label for="craft-name">Craft Name:</label>
+        <input type="text" id="craft-name" name="name" required><br>
+        <label for="craft-description">Craft Description:</label>
+        <textarea id="craft-description" name="description" required></textarea><br>
+        <label for="craft-supplies">Craft Supplies:</label>
+        <input type="text" id="craft-supplies" name="supplies" required><br>
+        <label for="craft-image">Craft Image:</label>
+        <input type="file" id="craft-image" name="image" accept="image/*" required><br> <!-- Accept only image files -->
+        <button type="submit">Add Craft</button>
+      </form>
     </div>
   </div>  
   <script src="script.js"></script>

@@ -97,22 +97,16 @@ const getCrafts = async () => {
     const result = await response.json();
     console.log(result);
     resetForm();
-    document.getElementById("myModal").style.display = "none";
-    showCrafts(); // Refresh crafts after adding new one
-  };
-  
-  const resetForm = () => {
-    const form = document.getElementById("add-craft-form");
-    form.reset();
+    document.getElementById("add-craft-modal").style.display = "none";
+    showCrafts(); // Refresh crafts after adding a new one
   };
   
   const openAddCraftModal = () => {
-    document.getElementById("myModal").style.display = "block";
-    resetForm();
+    document.getElementById("add-craft-modal").style.display = "block";
+    resetForm(); // Reset form fields when opening the modal
   };
   
   document.getElementById("add-craft-link").addEventListener("click", openAddCraftModal);
-  
-  document.getElementById("add-craft-form").addEventListener("submit", addCraft); // Listen for form submission
+  document.getElementById("add-craft-form").onsubmit = addCraft;
   
   showCrafts();
