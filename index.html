@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Buy & Sell Crafts <a href="#" id="add-link">+</a></h1>
+  <h1>Buy & Sell Crafts <a href="#" id="add-craft-link">+</a></h1>
   <div class="columns">
     <div class="column" id="column1"></div>
     <div class="column" id="column2"></div>
@@ -13,24 +13,23 @@
   </div>
   <div id="myModal" class="modal">
     <div class="modal-content">
-      <span class="close">&times;</span>
-      <div class="modal-content-wrapper">
-        <div class="modal-image">
-          <img id="modal-image">
+        <span class="close">&times;</span>
+        <div class="modal-content-wrapper">
+          <div class="modal-image">
+            <img id="modal-image">
+          </div>
+          <div class="modal-details">
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <ul id="modal-supplies"></ul>
+          </div>
         </div>
-        <div class="modal-details">
-          <h2 id="modal-title"></h2>
-          <p id="modal-description"></p>
-          <ul id="modal-supplies"></ul>
-        </div>
-        </div>
-    </div>
-    </div>
-</div>
-  <div id="myModal" class="modal">
+      </div>
+  </div>
+  <div id="add-craft-modal" class="modal">
     <div class="modal-content">
-      <span id="close-btn" class="close">&times;</span>
-      <form id="add-craft-form" enctype="multipart/form-data">
+      <span class="close" onclick="closeAddCraftModal()">&times;</span>
+      <form id="add-craft-form" method="post">
         <p>
           <label for="name">Craft Name:</label>
           <input type="text" id="name" name="name" required />
@@ -39,44 +38,24 @@
           <label for="description">Description:</label>
           <input type="text" id="description" name="description" required />
         </p>
+        <section id="supply-boxes">
+          <p>
+            <label class="inline">Supplies:</label>
+            <a href="#" id="add-supply">Add Supply</a>
+          </p>
+        </section>
+        <section class="columns">
+          <p id="img-prev-section">
+            <img id="img-prev">
+          </p>
+          <p>
+            <label for="img">Upload Image:</label>
+            <input type="file" id="img" name="img" accept="image/*" />
+          </p>
+        </section>
         <p>
-          <label for="supplies">Supplies:</label>
-          <input type="text" id="supplies" name="supplies" required />
+          <button type="submit">Submit</button>
         </p>
-        <p>
-          <label for="img">Upload Image:</label>
-          <input type="file" id="img" name="img" accept="image/*" />
-        </p>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  </div>
-  <button id="addCraftLink">Add Craft</button>
-
-  <div id="craftModal" class="modal">
-    <div class="modal-content">
-      <span id="closeModalBtn" class="close">&times;</span>
-      <h2 id="craftModalTitle"></h2>
-      <p id="craftModalDescription"></p>
-      <ul id="craftModalSupplies"></ul>
-      <img id="craftModalImage" src="" alt="Craft Image">
-    </div>
-  </div>
-
-  <div id="addCraftModal" class="modal">
-    <div class="modal-content">
-      <span id="closeAddCraftModalBtn" class="close">&times;</span>
-      <h2>Add Craft</h2>
-      <form id="addCraftForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
-        <label for="supplies">Supplies:</label><br>
-        <textarea id="supplies" name="supplies" rows="4" cols="50" required></textarea><br><br>
-        <label for="image">Image:</label>
-        <input type="file" id="image" name="image" accept="image/*" required><br><br>
-        <input type="submit" value="Submit">
       </form>
     </div>
   </div>
