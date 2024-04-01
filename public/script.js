@@ -6,6 +6,31 @@ const getCrafts = async () => {
       return "";
     }
   };
+
+  // Function to open the modal for adding a new craft
+const openAddCraftModal = () => {
+    const addCraftModal = document.getElementById("addCraftModal");
+    addCraftModal.style.display = "block";
+    
+    // Close modal when close button is clicked
+    const closeModal = () => {
+      addCraftModal.style.display = "none";
+    };
+    
+    // Close modal when close button is clicked
+    const closeButton = document.getElementById("addCraftModal").getElementsByClassName("close")[0];
+    closeButton.addEventListener("click", closeModal);
+    
+    // Close modal when clicking outside the modal
+    window.addEventListener("click", (event) => {
+      if (event.target == addCraftModal) {
+        closeModal();
+      }
+    });
+  };
+  
+  // Event listener for the "+" sign to open the add craft modal
+  document.getElementById("addCraftButton").addEventListener("click", openAddCraftModal);  
  
   const openModal = (craft) => {
     const modal = document.getElementById("myModal");
@@ -79,28 +104,3 @@ const getCrafts = async () => {
   };
  
   showCrafts();
-
-  // Function to open the modal for adding a new craft
-const openAddCraftModal = () => {
-    const addCraftModal = document.getElementById("addCraftModal");
-    addCraftModal.style.display = "block";
-    
-    // Close modal when close button is clicked
-    const closeModal = () => {
-      addCraftModal.style.display = "none";
-    };
-    
-    // Close modal when close button is clicked
-    const closeButton = document.getElementById("addCraftModal").getElementsByClassName("close")[0];
-    closeButton.addEventListener("click", closeModal);
-    
-    // Close modal when clicking outside the modal
-    window.addEventListener("click", (event) => {
-      if (event.target == addCraftModal) {
-        closeModal();
-      }
-    });
-  };
-  
-  // Event listener for the "+" sign to open the add craft modal
-  document.getElementById("addCraftButton").addEventListener("click", openAddCraftModal);
