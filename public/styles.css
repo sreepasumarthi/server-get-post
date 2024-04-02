@@ -101,3 +101,44 @@ body {
 #img-prev-section {
     margin-bottom: 10px;
 }
+
+/* CSS to style the modal */
+.w3-modal-content {
+    display: flex; /* Use flexbox to arrange content */
+    max-width: 600px; /* Set maximum width for the modal */
+    margin: 0 auto; /* Center the modal horizontally */
+}
+
+/* Style for the left section */
+#left-section {
+    flex: 1; /* Take up all available space in the flex container */
+    padding-right: 20px; /* Add some space to the right */
+}
+
+/* Style for the right section */
+#right-section {
+    display: flex; /* Use flexbox to arrange content */
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    padding-left: 20px; /* Add some space to the left */
+}
+
+/* Style for the placeholder image */
+#img-prev {
+    width: 200px; /* Set width */
+    height: 300px; /* Set height */
+    border: 1px solid #ccc; /* Add border */
+}
+
+/* Style for the choose file button */
+#img-prev-section input[type="file"] {
+    margin-top: 10px; /* Add some space */
+}
+
+/* Clearfix to contain floats */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
