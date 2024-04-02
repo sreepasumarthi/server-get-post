@@ -26,20 +26,21 @@
                             <label for="description">Description:</label>
                             <input type="text" id="description" name="description" required />
                         </p>
-    
+
                         <section class="columns">
+                            <p id="img-prev-section">
+                                <img id="img-prev" src="https://place-hold.it/200x300">
+                                <label for="img">Upload Image:</label>
+                                <input type="file" id="img" name="img" accept="image/*" />
+                            </p>
                             <p>
                                 <label for="img">Upload Image:</label>
                                 <input type="file" id="img" name="img" accept="image/*" />
                             </p>
-                            <p id="img-prev-section">
-                                <img id="img-prev" src="https://place-hold.it/200x300">
-                            </p>
                         </section>
-    
+
                         <p id="supplies-p">
                             <label class="inline">Supplies:</label>
-                            <input type="text" id="description" name="description" required />
                             <a href="#" id="add-supply">Add Supply</a>
                             <section id="supply-boxes"></section>
                         </p>
@@ -48,9 +49,9 @@
                             <button type="button" id="cancel-button">Cancel</button>
                         </p>
                     </form>
-    
+
                     <section id="craft-details" class="hidden">
-    
+
                     </section>
                 </section>
             </div>
