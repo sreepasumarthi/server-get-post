@@ -111,6 +111,12 @@ const addCraft = async (e) => {
   
     return supplies.join(",");
   };
+
+  document.getElementById("cancel-button").addEventListener("click", (e) => {
+    e.preventDefault();
+    resetForm();
+    document.getElementById("dialog").style.display = "none";
+});
   
   const resetForm = () => {
     const form = document.getElementById("add-craft-form");
