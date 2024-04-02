@@ -85,10 +85,19 @@ body {
 
 /*Add Craft Modal*/
 
-.w3-modal-content {
-    border-radius: 10px;
-}
-
 .w3-display-topright {
     cursor: pointer;
+}
+
+/* Style the placeholder image */
+#img-prev {
+    width: 200px;
+    height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Adjust spacing */
+#img-prev-section {
+    margin-bottom: 10px;
 }

@@ -157,7 +157,27 @@ const addCraft = async (e) => {
       document.getElementById("img-prev").src = "";
       return;
     }
-    document.getElementById("img-prev").src = URL.createObjectURL(
-      e.target.files.item(0)
-    );
-  };
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        const imgPrev = document.getElementById("img-prev");
+        imgPrev.src = event.target.result;
+        imgPrev.style.width = "200px"; // Set width to 200px
+        imgPrev.style.height = "300px"; // Set height to 300px
+    };
+    reader.readAsDataURL(e.target.files[0]);
+};
+
+document.getElementById("img").onchange = (e) => {
+    if (!e.target.files.length) {
+      document.getElementById("img-prev").src = "";
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        const imgPrev = document.getElementById("img-prev");
+        imgPrev.src = event.target.result;
+        imgPrev.style.width = "200px"; // Set width to 200px
+        imgPrev.style.height = "300px"; // Set height to 300px
+    };
+    reader.readAsDataURL(e.target.files[0]);
+};
