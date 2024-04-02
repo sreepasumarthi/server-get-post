@@ -69,18 +69,16 @@ const showCrafts = async () => {
         columns[shortestColumnIndex].appendChild(galleryItem);
         columnHeights[shortestColumnIndex] += galleryItem.offsetHeight;
 
-        // If the column's height exceeds the container's height, switch to the next column
         if (columnHeights[shortestColumnIndex] >= columns[shortestColumnIndex].offsetHeight) {
             columnIndex++;
             if (columnIndex === columnCount) columnIndex = 0;
-            columnHeights[shortestColumnIndex] = 0; // Reset the height of the column
+            columnHeights[shortestColumnIndex] = 0; 
         }
     });
 };
 
 showCrafts();
 
-// Function to add a new craft
 const addCraft = async (e) => {
     e.preventDefault();
     const form = document.getElementById("add-craft-form");
@@ -93,7 +91,6 @@ const addCraft = async (e) => {
       body: formData,
     });
   
-    // Check if data was successfully posted to the server
     if (response.status != 200) {
       console.log("Error posting data");
     }
@@ -104,7 +101,6 @@ const addCraft = async (e) => {
     showCrafts();
   };
   
-  // Function to get supplies from form
   const getSupplies = () => {
     const inputs = document.querySelectorAll("#supply-boxes input");
     let supplies = [];
@@ -113,10 +109,9 @@ const addCraft = async (e) => {
       supplies.push(input.value);
     });
   
-    return supplies.join(","); // Join supplies into a string
+    return supplies.join(",");
   };
   
-  // Function to reset form after submission
   const resetForm = () => {
     const form = document.getElementById("add-craft-form");
     form.reset();
@@ -124,14 +119,12 @@ const addCraft = async (e) => {
     document.getElementById("img-prev").src = "";
   };
   
-  // Function to display the form for adding a craft
   const showCraftForm = (e) => {
     e.preventDefault();
     openDialog("add-craft-form");
     resetForm();
   };
   
-  // Function to add a new input field for supplies
   const addSupply = (e) => {
     e.preventDefault();
     const section = document.getElementById("supply-boxes");
@@ -139,8 +132,7 @@ const addCraft = async (e) => {
     input.type = "text";
     section.append(input);
   };
-  
-  // Function to open the dialog
+
   const openDialog = (id) => {
     document.getElementById("dialog").style.display = "block";
     document.querySelectorAll("#dialog-details > *").forEach((item) => {
@@ -149,7 +141,6 @@ const addCraft = async (e) => {
     document.getElementById(id).classList.remove("hidden");
   };
   
-  // Initial code execution
   showCrafts();
   document.getElementById("add-craft-form").onsubmit = addCraft;
   document.getElementById("add-link").onclick = showCraftForm;
