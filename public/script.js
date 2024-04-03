@@ -131,19 +131,13 @@ const addCraft = async (e) => {
     resetForm();
   };
   
-
   const addSupply = (e) => {
     e.preventDefault();
     const section = document.getElementById("supply-boxes");
     const input = document.createElement("input");
     input.type = "text";
-    input.name = "supply";
-    input.placeholder = "Enter supply";
     section.append(input);
-};
-
-document.getElementById("add-supply").onclick = addSupply;
-
+  };
 
   const openDialog = (id) => {
     document.getElementById("dialog").style.display = "block";
