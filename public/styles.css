@@ -147,7 +147,6 @@ body {
     margin-right: 10px;
 }
 
-/* Choose file button */
 #add-craft-form input[type="file"] {
     background-color:rgb(97, 9, 97);
     color: white;
@@ -193,6 +192,6 @@ font-size:x-large;
         background-color: rgba(97, 9, 97, 0.3);
     }
 
-#name {
+#add-craft-form{
     margin-left:20px;
 }
