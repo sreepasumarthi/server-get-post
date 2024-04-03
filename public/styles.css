@@ -186,11 +186,11 @@ header {
 
 #jj {
     font-size: x-large;
-    margin-right:20px;
+    margin-left:-20pxpx;
 }
 
 #p{
-    margin-right:20px;
+    margin-left:-20pxpx;
 }
 
 #name,
