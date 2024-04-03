@@ -185,10 +185,14 @@ header {
 }
 
 #jj {
-font-size:larger;
+font-size:x-large;
 }
 
 #name,
     #description {
         background-color: rgba(97, 9, 97, 0.3);
     }
+
+#name {
+    margin-left:20px;
+}
