@@ -160,12 +160,12 @@ body {
 
 #left {
     float: left;
-    width: 50%;
+    width: 40%;
 }
 
 #right {
     float: right;
-    width: 50%;
+    width: 60%;
 }
 
 .clearfix::after {
@@ -176,4 +176,8 @@ body {
 
 #add-link {
     text-decoration: none;
+}
+
+#header{
+    margin-left:10px;
 }
