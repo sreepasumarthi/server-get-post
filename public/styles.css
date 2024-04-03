@@ -138,7 +138,7 @@ body {
 
 #add-craft-form button[type="submit"],
 #add-craft-form button[type="button"] {
-    background-color: purple;
+    background-color: rgb(97, 9, 97);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -149,7 +149,7 @@ body {
 
 /* Choose file button */
 #add-craft-form input[type="file"] {
-    background-color: purple;
+    background-color:rgb(97, 9, 97);
     color: white;
     border: none;
     padding: 10px 20px;
