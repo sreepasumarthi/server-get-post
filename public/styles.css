@@ -195,3 +195,14 @@ font-size:x-large;
 #add-craft-form{
     margin-left:20px;
 }
+
+#add-supply {
+    display: inline-block;
+    background-color: rgb(97, 9, 97);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
