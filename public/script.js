@@ -79,26 +79,36 @@ const showCrafts = async () => {
 
 showCrafts();
 
+// Function to add a new craft
 const addCraft = async (e) => {
     e.preventDefault();
     const form = document.getElementById("add-craft-form");
     const formData = new FormData(form);
     let response;
-    formData.append("supplies", getSupplies());
-
-    response = await fetch("https://server-get-post-n1ni.onrender.com/api/crafts", {
-        method: "POST",
-        body: formData,
-    });
-
-    if (response.status != 200) {
-        console.log("Error posting data");
+    const imgInput = document.getElementById("img");
+    if (imgInput.files.length > 0) {
+        formData.append("img", imgInput.files[0]);
     }
 
-    await response.json();
-    resetForm();
-    document.getElementById("dialog").style.display = "none";
-    showCrafts();
+    formData.append("supplies", getSupplies());
+
+    try {
+        response = await fetch("https://server-get-post-n1ni.onrender.com/api/crafts", {
+            method: "POST",
+            body: formData,
+        });
+
+        if (!response.ok) {
+            throw new Error("Error posting data");
+        }
+
+        await response.json();
+        resetForm();
+        document.getElementById("dialog").style.display = "none";
+        showCrafts();
+    } catch (error) {
+        console.error(error);
+    }
 };
   
   const getSupplies = () => {
