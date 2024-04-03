@@ -208,3 +208,12 @@ header {
     cursor: pointer;
     font-size: 14px;
 }
+
+#choose-file {
+    background-color:rgb(97, 9, 97);
+    color: white;
+    border: none;
+    padding: 8px 16px; 
+    border-radius: 5px;
+    cursor: pointer;
+}
