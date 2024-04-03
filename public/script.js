@@ -154,13 +154,13 @@ const addCraft = async (e) => {
   
   document.getElementById("img").onchange = (e) => {
     if (!e.target.files.length) {
-      document.getElementById("img-prev").src = "";
-      return;
+        document.getElementById("img-prev").src = "";
+        return;
     }
     const reader = new FileReader();
     reader.onload = function(event) {
         const imgPrev = document.getElementById("img-prev");
-        imgPrev.src = event.target.result;
+        imgPrev.src = event.target.result; // Set src to the data URL
         imgPrev.style.width = "200px"; // Set width to 200px
         imgPrev.style.height = "300px"; // Set height to 300px
     };
