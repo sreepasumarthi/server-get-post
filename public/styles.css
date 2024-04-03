@@ -157,3 +157,19 @@ body {
     border-radius: 5px;
     margin-right: 10px;
 }
+
+#left {
+    float: left;
+    width: 50%;
+}
+
+#right {
+    float: right;
+    width: 50%;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
