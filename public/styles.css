@@ -176,8 +176,14 @@ body {
 
 #add-link {
     text-decoration: none;
+    font-weight: bold;
 }
 
-#header{
+header {
     margin-left:10px;
+    font-weight: bold;
+}
+
+#jj {
+font-size: medium;
 }
