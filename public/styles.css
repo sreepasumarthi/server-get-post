@@ -99,6 +99,7 @@ body {
 #img-prev-section {
     margin-bottom: 10px;
 }
+
 .w3-modal-content {
     display: flex;
     max-width: 600px;
@@ -112,21 +113,21 @@ body {
 }
 
 #right-section {
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    padding-left: 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
 }
 
 #img-prev {
     width: 200px;
-    height: 300px; 
+    height: 300px;
     border: 1px solid #ccc;
 }
 
 #img-prev-section input[type="file"] {
-    margin-top: 10px; 
+    margin-top: 10px;
 }
 
 
@@ -148,7 +149,7 @@ body {
 }
 
 #add-craft-form input[type="file"] {
-    background-color:rgb(97, 9, 97);
+    background-color: rgb(97, 9, 97);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -179,36 +180,31 @@ body {
 }
 
 header {
-    margin-left:10px;
+    margin-left: 10px;
     font-weight: bolder;
 }
 
 #jj {
-font-size:x-large;
+    font-size: x-large;
 }
 
 #name,
-    #description {
-        background-color: rgba(97, 9, 97, 0.3);
-    }
-
-#add-craft-form{
-    margin-left:20px;
+#description {
+    background-color: rgba(97, 9, 97, 0.3);
 }
 
-    #add-supply {
-        display: inline-block;
-        background-color: purple;
-        color: white;
-        border: none;
-        padding: 8px 16px; 
-        text-decoration: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px; 
-    }
+#add-craft-form {
+    margin-left: 20px;
+}
 
-    /* Hover effect */
-    #add-supply:hover {
-        background-color: darkpurple;
-    }
+#add-supply {
+    display: inline-block;
+    background-color:rgb(97, 9, 97);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
