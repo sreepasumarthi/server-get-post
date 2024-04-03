@@ -160,16 +160,20 @@ body {
 
 #left {
     float: left;
-    width: 55%;
+    width: 50%;
 }
 
 #right {
     float: right;
-    width: 55%;
+    width: 50%;
 }
 
 .clearfix::after {
     content: "";
     clear: both;
     display: table;
+}
+
+#add-link {
+    text-decoration: none;
 }
