@@ -85,21 +85,21 @@ const addCraft = async (e) => {
     const formData = new FormData(form);
     let response;
     formData.append("supplies", getSupplies());
-  
-    response = await fetch("/api/crafts", {
-      method: "POST",
-      body: formData,
+
+    response = await fetch("https://server-get-post-n1ni.onrender.com/api/crafts", {
+        method: "POST",
+        body: formData,
     });
-  
+
     if (response.status != 200) {
-      console.log("Error posting data");
+        console.log("Error posting data");
     }
-  
+
     await response.json();
     resetForm();
     document.getElementById("dialog").style.display = "none";
     showCrafts();
-  };
+};
   
   const getSupplies = () => {
     const inputs = document.querySelectorAll("#supply-boxes input");
@@ -158,11 +158,11 @@ const addCraft = async (e) => {
         return;
     }
     const reader = new FileReader();
-    reader.onload = function(event) {
+    reader.onload = function (event) {
         const imgPrev = document.getElementById("img-prev");
-        imgPrev.src = event.target.result; // Set src to the data URL
-        imgPrev.style.width = "200px"; // Set width to 200px
-        imgPrev.style.height = "300px"; // Set height to 300px
+        imgPrev.src = event.target.result;
+        imgPrev.style.width = "200px";
+        imgPrev.style.height = "300px";
     };
     reader.readAsDataURL(e.target.files[0]);
 };
