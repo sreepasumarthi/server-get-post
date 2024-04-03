@@ -176,3 +176,7 @@ const addCraft = async (e) => {
     };
     reader.readAsDataURL(e.target.files[0]);
 };
+
+document.getElementById("img-prev").onerror = function() {
+    this.src = 'https://place-hold.it/200x300';
+};
