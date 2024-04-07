@@ -79,7 +79,6 @@ const showCrafts = async () => {
 
 showCrafts();
 
-// Function to add a new craft
 const addCraft = async (e) => {
     e.preventDefault();
     const form = document.getElementById("add-craft-form");
@@ -105,6 +104,8 @@ const addCraft = async (e) => {
         await response.json();
         resetForm();
         document.getElementById("dialog").style.display = "none";
+        
+        // Call showCrafts only once after adding the craft
         showCrafts();
     } catch (error) {
         console.error(error);
