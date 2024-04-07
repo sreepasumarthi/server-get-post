@@ -156,6 +156,7 @@ const addCraft = async (e) => {
     document.getElementById(id).classList.remove("hidden");
   };
   
+  showCrafts();
   document.getElementById("add-craft-form").onsubmit = addCraft;
   document.getElementById("add-link").onclick = showCraftForm;
   document.getElementById("add-supply").onclick = addSupply;
