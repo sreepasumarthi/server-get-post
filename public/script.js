@@ -79,6 +79,7 @@ const showCrafts = async () => {
 
 showCrafts();
 
+// Function to add a new craft
 const addCraft = async (e) => {
     e.preventDefault();
     const form = document.getElementById("add-craft-form");
@@ -104,11 +105,11 @@ const addCraft = async (e) => {
         await response.json();
         resetForm();
         document.getElementById("dialog").style.display = "none";
+        showCrafts();
     } catch (error) {
         console.error(error);
     }
 };
-
   
   const getSupplies = () => {
     const inputs = document.querySelectorAll("#supply-boxes input");
